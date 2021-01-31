@@ -2,11 +2,11 @@
 
 As I was working on my latest app, I recognized the need for a simple introduction interface; one that would allow you to focus on key elements and keep your message clear and concise, while creating smooth animations. My solution was IntroCards, which allows you to create a card that moves around the screen gracefully and obscures irrelevant pieces of information.
 
-##Usage
+## Usage
 
 IntroCards are meant to be simple to use. Initializing requires a title, a message, and an action ( `((IntroCard, Int) -> (Int)) `). Each time the screen is tapped, the IntroCard runs that action. 
 
-###Actions
+### Actions
 Since most app introductions will probably have multiple stages, the action closure takes in an Int, which correlates to the “stage” variable, and runs a corresponding action. Make sure to increment the stage variable each time. 
 
 It might be easiest to create a custom class to deal with this. See below as an example:
