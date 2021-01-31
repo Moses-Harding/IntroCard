@@ -61,21 +61,12 @@ public class IntroCard: UIView {
         parentView.addSubview(self)
         translatesAutoresizingMaskIntoConstraints = false
         
-        if #available(iOS 11.0, *) {
-            let constraints = ([
-                topAnchor.constraint(equalTo: parentView.topAnchor),
-                bottomAnchor.constraint(equalTo: parentView.safeAreaLayoutGuide.bottomAnchor),
-                leadingAnchor.constraint(equalTo: parentView.leadingAnchor),
-                trailingAnchor.constraint(equalTo: parentView.trailingAnchor)
-            ])
-        } else {
             let constraints = ([
                 topAnchor.constraint(equalTo: parentView.topAnchor),
                 bottomAnchor.constraint(equalTo: parentView.bottomAnchor),
                 leadingAnchor.constraint(equalTo: parentView.leadingAnchor),
                 trailingAnchor.constraint(equalTo: parentView.trailingAnchor)
             ])
-        }
         
         NSLayoutConstraint.activate(constraints)
     }
