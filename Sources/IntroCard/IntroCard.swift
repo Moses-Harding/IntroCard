@@ -7,24 +7,24 @@ extension UIColor {
     }
 }
 
-enum Position {
+public enum Position {
     case top, bottom, middle
 }
 
-class IntroCard: UIView {
+public class IntroCard: UIView {
     
     weak var parentView: UIView!
     weak var parentController: UIViewController!
     
-    var backgroundView = UIView()
+    public var backgroundView = UIView()
     
-    var cardBody = UIView()
+    public var cardBody = UIView()
     
-    var messageLabel = UILabel()
-    var message: String!
+    public var messageLabel = UILabel()
+    public var message: String!
     
-    var titleLabel = UILabel()
-    var title: String!
+    public var titleLabel = UILabel()
+    public var title: String!
     
     var titleMultiplier: CGFloat = 0.15
     var topSpacerMultiplier: CGFloat = 0.1
@@ -34,9 +34,9 @@ class IntroCard: UIView {
     var backgroundBottomConstraint: NSLayoutConstraint!
     
     var stage: Int = 0
-    var action: ((IntroCard, Int) -> (Int))!
+    public var action: ((IntroCard, Int) -> (Int))!
     
-    init(viewController: UIViewController, title: String, message: String, action: @escaping ((IntroCard, Int) -> (Int))) {
+    public init(viewController: UIViewController, title: String, message: String, action: @escaping ((IntroCard, Int) -> (Int))) {
         super.init(frame: CGRect.zero)
         
         self.parentController = viewController
@@ -164,7 +164,7 @@ class IntroCard: UIView {
         NSLayoutConstraint.activate(messageConstraints)
     }
     
-    func setFont(for label: UILabel, fontSize: CGFloat, fontName: String = "AppleSDGothicNeo-Light") {
+    public func setFont(for label: UILabel, fontSize: CGFloat, fontName: String = "AppleSDGothicNeo-Light") {
         
         guard let customFont = UIFont(name: fontName, size: fontSize) else { fatalError("Font not loaded")}
         if #available(iOS 11.0, *) {
@@ -177,7 +177,7 @@ class IntroCard: UIView {
         label.numberOfLines = 0
     }
     
-    func transition(newTitle: String, newMessage: String, placement: CGFloat = 0, position: Position = .middle) {
+    public func transition(newTitle: String, newMessage: String, placement: CGFloat = 0, position: Position = .middle) {
         
         var newTop: NSLayoutConstraint!
         var newCard: NSLayoutConstraint
@@ -227,7 +227,7 @@ class IntroCard: UIView {
         })
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let action = action else { fatalError("No actions")}
         
         stage = action(self, stage)
