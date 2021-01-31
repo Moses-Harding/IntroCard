@@ -29,7 +29,7 @@ class IntroPresenter {
             switch stage {
             case 0:
 		//2
-                card.transition(newTitle: "Second Title", newMessage: "This is the top of the screen. Let's look at the bottom.", placement: 0.5, position: .top)
+                card.transition(newTitle: "First Title", newMessage: "This is the top of the screen. Let's look at the bottom.", placement: 0.5, position: .top)
             case 1:
 		//3
                 card.transition(newTitle: "Second Title", newMessage: "This is what the bottom looks like.", placement: 0.6, position: .bottom)
