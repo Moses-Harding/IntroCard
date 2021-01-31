@@ -16,15 +16,27 @@ public class IntroCard: UIView {
     weak var parentView: UIView!
     weak var parentController: UIViewController!
     
-    public var backgroundView = UIView()
+    //BackgroundView
+    public var backgroundView: UIView! = UIView()
+    public var backgroundViewColor = UIColor(256, 256, 256, 0.5)
+    public var backgroundViewCornerRadius: CGFloat = 20
     
-    public var cardBody = UIView()
+    //Card Body
+    public var cardBody: UIView! = UIView()
+    public var cardBodyBackgroundColor = UIColor(256, 256, 256, 0.85)
     
     public var messageLabel = UILabel()
     public var message: String!
     
     public var titleLabel = UILabel()
     public var title: String!
+    
+    //Shadow variables
+    public var shadowCornerRadius: CGFloat  = 20
+    public var shadowColor = UIColor.black.cgColor
+    public var shadowOffset = CGSize.zero
+    public var shadowRadius: CGFloat = 20
+    public var shadowOpacity: Float = 0.25
     
     var titleMultiplier: CGFloat = 0.15
     var topSpacerMultiplier: CGFloat = 0.1
@@ -88,11 +100,11 @@ public class IntroCard: UIView {
         
         NSLayoutConstraint.activate(constraints)
         
-        backgroundView.backgroundColor = UIColor(256, 256, 256, 0.5)
-        backgroundView.layer.cornerRadius = 20
+        backgroundView.backgroundColor = backgroundViewColor
+        backgroundView.layer.cornerRadius = backgroundViewCornerRadius
     }
     
-    func setUpCardBody() {
+    public func setUpCardBody() {
         
         backgroundView.addSubview(cardBody)
         cardBody.translatesAutoresizingMaskIntoConstraints = false
@@ -108,12 +120,12 @@ public class IntroCard: UIView {
         
         NSLayoutConstraint.activate(constraints)
         
-        cardBody.backgroundColor = UIColor(256, 256, 256, 0.85)
-        cardBody.layer.cornerRadius = 20
-        cardBody.layer.shadowColor = UIColor.black.cgColor
-        cardBody.layer.shadowOffset = CGSize.zero
-        cardBody.layer.shadowRadius = 20
-        cardBody.layer.shadowOpacity = 0.25
+        cardBody.backgroundColor = cardBodyBackgroundColor
+        cardBody.layer.cornerRadius = shadowCornerRadius
+        cardBody.layer.shadowColor = shadowColor
+        cardBody.layer.shadowOffset = shadowOffset
+        cardBody.layer.shadowRadius = shadowRadius
+        cardBody.layer.shadowOpacity = shadowOpacity
     }
 
     
@@ -153,6 +165,19 @@ public class IntroCard: UIView {
         ])
         
         NSLayoutConstraint.activate(messageConstraints)
+    }
+    
+    public func resetView() {
+        
+        backgroundView.removeFromSuperview()
+        backgroundView = UIView()
+        
+        cardBody.removeFromSuperview()
+        cardBody = UIView()
+        
+        setUpBackgroundView()
+        setUpCardBody()
+        setUpMessageBody()
     }
     
     public func setFont(for label: UILabel, fontSize: CGFloat, fontName: String = "AppleSDGothicNeo-Light") {
