@@ -6,7 +6,6 @@ As I was working on my latest app, I recognized the need for a simple introducti
 
 IntroCards are meant to be simple to use. Initializing requires a title, a message, and an action ( `((IntroCard, Int) -> (Int)) `). Each time the screen is tapped, the IntroCard runs that action. 
 
-### Actions
 Since most app introductions will probably have multiple stages, the action closure takes in an Int, which correlates to the “stage” variable, and runs a corresponding action. Make sure to increment the stage variable each time. 
 
 It might be easiest to create a custom class to deal with this. See below as an example:
